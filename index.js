@@ -19,6 +19,22 @@ setInterval(function(){
   });
 },6500)
 
+// Responsible for bombs that are thrown from 
+// right side of each baloon
+setInterval(function(){
+  baloons.forEach((baloon,index) => {
+      let bomb = document.createElement('div');
+      let image = document.createElement('img');
+      image.src = './img/bomb.png';
+      bomb.appendChild(image);
+      bomb.classList.add('bomb'); 
+      bomb.style.position = 'absolute';
+      bomb.style.top = 160 + 'px';
+      // bomb.style.left = 0.15*screen.width + 'px';
+      bomb.style.left = baloon.getBoundingClientRect().left + (0.1*screen.width) + 'px';
+      playArea.appendChild(bomb);  
+  });
+},5000)
 
 // Responsible for moving each bomb down
 setInterval(function(){
