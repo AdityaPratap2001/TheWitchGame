@@ -13,8 +13,7 @@ body{
   background-position: center;
   overflow: hidden;
 }
-
-.baloon{
+  .baloon{
   width: 11%;
   position: absolute;
 }
@@ -82,4 +81,6 @@ body{
   .witch{
     width: 24%;
   }
+=======
+>>>>>>> 9c650e7509c1cb8743c7d7f441a805ef009e9810
 }
