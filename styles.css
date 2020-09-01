@@ -13,3 +13,44 @@ body{
   background-position: center;
   overflow: hidden;
 }
+
+.baloon{
+  width: 11%;
+  position: absolute;
+}
+.witch{
+  width: 11%;
+  position: absolute;
+  bottom: 4vh;
+  left: 44%;
+  z-index: 2;
+}
+.baloon1{
+  left: 15%;
+  z-index: 3;
+}
+.baloon2{
+  left: 43%;
+  z-index: 3;
+}
+.baloon3{
+  left: 72%;
+  z-index: 3;
+}
+.bomb{
+  height: 3vh;
+  width: 2vw;
+  z-index: 3;
+  /* background-image: url(./img/bomb.png); */
+  /* background-color: #eee; */
+  border:red 1px solid;
+}
+.bomb img{
+  width: 10vh;
+  transform: translate(-25%,-50%);
+}
+.fire img{
+  transform: rotate(180deg);
+  width: 15vh;
+  z-index: 2;
+}
