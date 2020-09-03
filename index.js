@@ -1,13 +1,46 @@
 let witch = document.querySelector('.witch');
+let witch_lifeline = document.querySelector('.witch_life')
 let baloons = document.querySelectorAll('.baloon');
+let baloons_lifeline = document.querySelectorAll('.baloon_life');
+let fires = document.querySelectorAll('.fire');
 let playArea = document.querySelector('body');
-let witch_life = 100;
+let witch_lifestatus = document.querySelector('.witch_lifeline')
 let baloons_life = [100,100,100];
+let witch_life = 100;
+
+// To keep track of each baloon's life & witch's life
+var check = setInterval(function(){
+
+  witch_lifestatus.style.height = witch_life + '%';
+
+  for(var i=0;i<baloons_lifeline.length;i++){
+    baloons_lifeline[i].style.height = baloons_life[i] + '%';
+  }
+
+  for(var i=0;i<baloons.length;i++){
+    if(baloons_life[i]<1){
+      baloons[i].src = './img/explosion.gif';
+    }
+  }
+  if(witch_life < 1){
+    alert(`You couldn't save them!`);
+    clearInterval(check);
+    location.reload();
+  }
+  else if(baloons_life[0]<1 && baloons_life[1]<1 && baloons_life[2]<1){
+    // setTimeout(function(){
+      alert(`You saved them!`);
+      clearInterval(check);
+      location.reload();
+    // },1000)
+  }
+},100)
 
 // Responsible for bombs that are thrown from 
 // left side of each baloon
 setInterval(function(){
   baloons.forEach((baloon,index) => {
+    if(baloons_life[index] > 1){
       let bomb = document.createElement('div');
       let image = document.createElement('img');
       image.src = './img/bomb.png';
@@ -18,6 +51,7 @@ setInterval(function(){
       // bomb.style.left = 0.15*screen.width + 'px';
       bomb.style.left = baloon.getBoundingClientRect().left + 'px';
       playArea.appendChild(bomb);
+    }   
   });
 },6500)
 
@@ -25,6 +59,7 @@ setInterval(function(){
 // right side of each baloon
 setInterval(function(){
   baloons.forEach((baloon,index) => {
+    if(baloons_life[index]>1){
       let bomb = document.createElement('div');
       let image = document.createElement('img');
       image.src = './img/bomb.png';
@@ -35,6 +70,7 @@ setInterval(function(){
       // bomb.style.left = 0.15*screen.width + 'px';
       bomb.style.left = baloon.getBoundingClientRect().left + (0.1*screen.width) + 'px';
       playArea.appendChild(bomb);  
+    } 
   });
 },5000)
 
@@ -56,6 +92,28 @@ setInterval(function(){
   })
 },62.5)
 
+// For detecting if bomb hits witch
+setInterval(function(){
+  let bombs = document.querySelectorAll('.bomb');
+  bombs.forEach(bomb => {
+    let bomb_top = bomb.getBoundingClientRect().top;
+    let bomb_left = bomb.getBoundingClientRect().left;
+    let witch_left = witch.getBoundingClientRect().left;
+    if((bomb_top >= (0.72*screen.height)) && (bomb_top <= screen.height)){
+      if(bomb_left <= witch_left){
+        let diff = witch_left - bomb_left;
+        if(diff<=0.01*screen.width){
+          witch_life = witch_life - 33.33;
+        }
+      }
+      else if(bomb_left <= witch_left + witch.offsetWidth - (0.02*screen.width)){
+        witch_life = witch_life - 33.33;
+      }
+      bomb.style.display = 'none';
+    } 
+  })
+},10)
+
 // For detecting if fire hits bomb
 setInterval(function(){
   let fires = document.querySelectorAll('.fire');
@@ -71,11 +129,9 @@ setInterval(function(){
             let diff = baloon_left-fire_left;
             if(diff<=0.04*screen.width){
               baloons_life[index] = baloons_life[index] - 33.33;
-              // alert('Collision!');
             }
           }
           else if(fire_left <= baloon_left + (0.55*baloon.offsetWidth)){
-            // alert('Collision!');
             baloons_life[index] = baloons_life[index] - 33.33;
           }
       })
@@ -84,34 +140,12 @@ setInterval(function(){
   })
 },10)
 
-// For detecting if bomb hits witch
-setInterval(function(){
-  let bombs = document.querySelectorAll('.bomb');
-  bombs.forEach(bomb => {
-    let bomb_top = bomb.getBoundingClientRect().top;
-    let bomb_left = bomb.getBoundingClientRect().left;
-    let witch_left = witch.getBoundingClientRect().left;
-    if((bomb_top >= (0.72*screen.height)) && (bomb_top <= screen.height)){
-      if(bomb_left <= witch_left){
-        let diff = witch_left - bomb_left;
-        if(diff<=0.01*screen.width){
-          // alert('Collision!');
-          witch_life = witch_life - 33.33;
-        }
-      }
-      else if(bomb_left <= witch_left + witch.offsetWidth - (0.02*screen.width)){
-        // alert('Collision!');
-        witch_life = witch_life - 33.33;
-      }
-      bomb.style.display = 'none';
-    } 
-  })
-},10)
-
 // For moving witch towards left
 function moveLeft(){
   let initialPosLeft = witch.getBoundingClientRect().left;
+  let lifeLeft = witch_lifeline.getBoundingClientRect().left;
   if(initialPosLeft > 32){
+    witch_lifeline.style.left = lifeLeft - 20 + 'px';
     witch.style.left = initialPosLeft - 20 + 'px';
   }
 }
@@ -119,8 +153,10 @@ function moveLeft(){
 // For moving witch right
 let max_right = 0.8*screen.width;
 function moveRight(){
+  let lifeRight = witch_lifeline.getBoundingClientRect().left;
   let initialPosRight = witch.getBoundingClientRect().left;
   if(initialPosRight < max_right){
+    witch_lifeline.style.left = lifeRight + 20 + 'px';
     witch.style.left = initialPosRight + 20 + 'px';
   }
 }

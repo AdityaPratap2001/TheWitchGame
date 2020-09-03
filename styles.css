@@ -1,6 +1,6 @@
 *{
-  margin:0;
-  padding:0;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 body{
@@ -11,9 +11,27 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
-  .baloon{
+
+.life_box{
+  width:1.7%;
+  height:13%;
+  position: absolute;
+  border:white 1px solid;
+  padding : 3px;
+  display:flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 5px;
+}
+.life{
+  border: white 1px solid;
+  height:67%;
+  width:100%;
+  background: linear-gradient(#184e68,#da0641);  
+}
+.baloon{
   width: 11%;
   position: absolute;
 }
@@ -24,16 +42,39 @@ body{
   left: 44%;
   z-index: 2;
 }
+.witch_life{
+  bottom: 6vh;
+  left: 43%;
+  z-index: 2;
+}
+.witch_life .life{
+  background: linear-gradient(#c3ec52,#0ba29d)
+}
 .baloon1{
   left: 15%;
+  z-index: 3;
+}
+.lifeone{
+  left: 14%;
+  margin-top: 2%;
   z-index: 3;
 }
 .baloon2{
   left: 43%;
   z-index: 3;
 }
+.lifetwo{
+  left: 42%;
+  margin-top: 2%;
+  z-index: 3;
+}
 .baloon3{
   left: 72%;
+  z-index: 3;
+}
+.lifethree{
+  left: 71%;
+  margin-top: 2%;
   z-index: 3;
 }
 .bomb{
@@ -53,6 +94,7 @@ body{
   width: 15vh;
   z-index: 2;
 }
+
 @media (max-width:920px){
   .baloon{
     width: 15%;
