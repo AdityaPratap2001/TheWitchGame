@@ -124,3 +124,81 @@ body{
     width: 24%;
   }
 }
+
+/* Loosing section */
+.lost,.won{
+  display: none;
+  position: absolute;
+  z-index: 6;
+  margin: 0%;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: black;
+}
+
+
+.lost,.won h1
+{
+  margin: 0;
+  padding: 0;
+  color: #111;
+  font-size: 60px;
+  letter-spacing: 0.2em;
+}
+
+.lost,.won h1 span
+{
+  animation: loosing 3s linear infinite;
+}
+  
+.lost,.won h1 span:nth-child(1)
+{
+  animation-delay: 0.5s;
+}
+.lost,.won h1 span:nth-child(2)
+{
+  animation-delay: 0.95s;
+}
+.lost,.won h1 span:nth-child(3)
+{
+  animation-delay: 1.25s;
+}
+.lost,.won h1 span:nth-child(4)
+{
+  animation-delay: 1.6s;
+}
+.lost,.won h1 span:nth-child(5)
+{
+  animation-delay: 1.9s;
+}
+.lost,.won h1 span:nth-child(6)
+{
+  animation-delay: 2.3s;
+}
+.lost,.won h1 span:nth-child(7)
+{
+  animation-delay: 2.75s;
+}
+  
+ 
+@keyframes loosing{
+  0%{
+    color: #ffffff;
+    filter: blur(2px);
+    text-shadow:0 0 10px #00b3ff,
+                0 0 10px #00b3ff,
+                0 0 20px #00b3ff,
+                0 0 40px #00b3ff,
+                0 0 80px #00b3ff,
+                0 0 120px #00b3ff,
+                0 0 200px #00b3ff;
+    }
+    5%,95%{
+      color: #111;
+      filter: blur(0px);
+      text-shadow: none;
+    }
+}

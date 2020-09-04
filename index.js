@@ -23,16 +23,19 @@ var check = setInterval(function(){
     }
   }
   if(witch_life < 1){
-    alert(`You couldn't save them!`);
+    // alert(`You couldn't save them!`);
     clearInterval(check);
-    location.reload();
+    setTimeout(function(){
+      document.querySelector('.lost').style.display = 'flex';
+    },1000)
+    // location.reload();
   }
   else if(baloons_life[0]<1 && baloons_life[1]<1 && baloons_life[2]<1){
-    // setTimeout(function(){
-      alert(`You saved them!`);
-      clearInterval(check);
-      location.reload();
-    // },1000)
+    // alert(`You saved them!`);
+    clearInterval(check);
+    document.querySelector('.won').style.display = 'flex';
+    // location.reload();
+    
   }
 },100)
 
