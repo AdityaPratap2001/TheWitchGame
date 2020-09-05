@@ -188,7 +188,6 @@ body{
 {
   animation: loosing 3s linear infinite;
 }
-  
 .lost h1 span:nth-child(1)t,.won h1 span:nth-child(1)
 {
   animation-delay: 0.5s;
@@ -214,6 +213,32 @@ body{
   animation-delay: 2.3s;
 }
 .lost h1 span:nth-child(7),.won h1 span:nth-child(7)
+
+.lost,.won h1 span:nth-child(1)
+{
+  animation-delay: 0.5s;
+}
+.lost,.won h1 span:nth-child(2)
+{
+  animation-delay: 0.95s;
+}
+.lost,.won h1 span:nth-child(3)
+{
+  animation-delay: 1.25s;
+}
+.lost,.won h1 span:nth-child(4)
+{
+  animation-delay: 1.6s;
+}
+.lost,.won h1 span:nth-child(5)
+{
+  animation-delay: 1.9s;
+}
+.lost,.won h1 span:nth-child(6)
+{
+  animation-delay: 2.3s;
+}
+.lost,.won h1 span:nth-child(7)
 {
   animation-delay: 2.75s;
 }
@@ -237,3 +262,4 @@ body{
       text-shadow: none;
     }
 }
+
