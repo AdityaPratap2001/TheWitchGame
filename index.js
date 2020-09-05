@@ -8,6 +8,19 @@ let witch_lifestatus = document.querySelector('.witch_lifeline')
 let baloons_life = [100,100,100];
 let witch_life = 100;
 
+// PreLoader
+let loading_width = 0;
+let loading = setInterval(function(){
+  document.querySelector('.load_in').style.width = loading_width + '%';
+  loading_width = loading_width + 10;
+  if(loading_width == 110){
+    clearInterval(loading);
+  }
+},430)
+setTimeout(function(){
+  document.querySelector('.preLoader').style.display = 'none';
+},4500)
+
 // To keep track of each baloon's life & witch's life
 var check = setInterval(function(){
 
@@ -23,16 +36,19 @@ var check = setInterval(function(){
     }
   }
   if(witch_life < 1){
-    alert(`You couldn't save them!`);
+    // alert(`You couldn't save them!`);
     clearInterval(check);
-    location.reload();
+    setTimeout(function(){
+      document.querySelector('.lost').style.display = 'flex';
+    },1000)
+    // location.reload();
   }
   else if(baloons_life[0]<1 && baloons_life[1]<1 && baloons_life[2]<1){
-    // setTimeout(function(){
-      alert(`You saved them!`);
-      clearInterval(check);
-      location.reload();
-    // },1000)
+    // alert(`You saved them!`);
+    clearInterval(check);
+    document.querySelector('.won').style.display = 'flex';
+    // location.reload();
+    
   }
 },100)
 
@@ -114,7 +130,7 @@ setInterval(function(){
   })
 },10)
 
-// For detecting if fire hits bomb
+// For detecting if fire hits baloon
 setInterval(function(){
   let fires = document.querySelectorAll('.fire');
   let baloons = document.querySelectorAll('.baloon');
