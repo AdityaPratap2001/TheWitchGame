@@ -191,6 +191,11 @@ function fire(){
   playArea.appendChild(fire);   
 }
 
+function fireSound(){
+  var audio =new Audio('./sounds/fireSwoosh.mp3');
+	audio.play();
+}
+
 let canFire = true;
 window.addEventListener('keydown',(e)=>{
   if(e.keyCode === 37){
@@ -202,6 +207,7 @@ window.addEventListener('keydown',(e)=>{
   else if(e.keyCode === 38){
     if(canFire){
       fire();
+      fireSound();
       canFire = false;
       setTimeout(function(){
         canFire = true;
