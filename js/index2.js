@@ -2,10 +2,11 @@ let witch = document.querySelector('.witch');
 let witch_lifeline = document.querySelector('.witch_life')
 let baloons = document.querySelectorAll('.baloon');
 let baloons_lifeline = document.querySelectorAll('.baloon_life');
+let lifeBox = document.querySelectorAll('.life_box');
 let fires = document.querySelectorAll('.fire');
 let playArea = document.querySelector('body');
 let witch_lifestatus = document.querySelector('.witch_lifeline')
-let baloons_life = [100,100,100];
+let baloons_life = [100,100];
 let witch_life = 100;
 
 // PreLoader
@@ -20,6 +21,56 @@ let loading = setInterval(function(){
 setTimeout(function(){
   document.querySelector('.preLoader').style.display = 'none';
 },4500)
+
+// To move first baloon
+let xAxis = 400;
+let canMoveLeft = true;
+let canMoveRight = false;
+setInterval(function(){
+  baloons[0].style.left = xAxis + 'px';
+  lifeBox[0].style.left = xAxis - 20 + 'px';
+  if(canMoveLeft){
+    xAxis = xAxis - 5;
+  }  
+  if(canMoveRight){
+    xAxis = xAxis + 5;
+  }
+
+  if(xAxis < 30){
+    canMoveLeft = false;
+    canMoveRight = true;
+  }
+  if(xAxis > 1100){
+    canMoveRight = false;
+    canMoveLeft = true;
+  }
+
+},20)
+
+// / To move second baloon
+let xAxis2 = 800;
+let canMoveLeft2 = false;
+let canMoveRight2 = true;
+setInterval(function(){
+  baloons[1].style.left = xAxis2 + 'px';
+  lifeBox[1].style.left = xAxis2 - 20 + 'px';
+  if(canMoveLeft2){
+    xAxis2 = xAxis2 - 5;
+  }  
+  if(canMoveRight2){
+    xAxis2 = xAxis2 + 5;
+  }
+
+  if(xAxis2 < 30){
+    canMoveLeft2 = false;
+    canMoveRight2 = true;
+  }
+  if(xAxis2 > 1100){
+    canMoveRight2 = false;
+    canMoveLeft2 = true;
+  }
+
+},20)
 
 // To keep track of each baloon's life & witch's life
 var check = setInterval(function(){
@@ -42,10 +93,12 @@ var check = setInterval(function(){
       document.querySelector('.lost').style.display = 'flex';
     },1000)
   }
-  else if(baloons_life[0]<1 && baloons_life[1]<1 && baloons_life[2]<1){
+  else if(baloons_life[0]<1 && baloons_life[1]<1){
     // alert(`You saved them!`);
     clearInterval(check);
+    setTimeout(function(){
     document.querySelector('.won').style.display = 'flex';
+    },1000)
   }
 },100)
 
@@ -99,7 +152,7 @@ setInterval(function(){
   let fires = document.querySelectorAll('.fire');
   fires.forEach(fire => {
     let initialFireTop = fire.getBoundingClientRect().top;
-    fire.style.top = initialFireTop - 5.75 + 'px';
+    fire.style.top = initialFireTop - 10.75 + 'px';
   })
 },62.5)
 
@@ -110,7 +163,7 @@ setInterval(function(){
     let bomb_top = bomb.getBoundingClientRect().top;
     let bomb_left = bomb.getBoundingClientRect().left;
     let witch_left = witch.getBoundingClientRect().left;
-    if((bomb_top >= (0.72*screen.height)) && (bomb_top <= screen.height)){
+    if((bomb_top >= (0.68*screen.height)) && (bomb_top <= screen.height)){
       if(bomb_left <= witch_left){
         let diff = witch_left - bomb_left;
         if(diff<=0.01*screen.width){
@@ -133,7 +186,7 @@ setInterval(function(){
     let fire_left = fire.getBoundingClientRect().left;
     let fire_top = fire.getBoundingClientRect().top;
     
-    if(fire_top <= (0.08*screen.height) && (fire_top>(0.04*screen.height))){
+    if(fire_top <= (0.10*screen.height) && (fire_top>(0.04*screen.height))){
       baloons.forEach((baloon,index) => {
         baloon_left = baloon.getBoundingClientRect().left;
           if(fire_left <= baloon_left){
@@ -214,7 +267,7 @@ window.addEventListener('keydown',(e)=>{
       canFire = false;
       setTimeout(function(){
         canFire = true;
-      },1600)
+      },1200)
     }
   }
 })
