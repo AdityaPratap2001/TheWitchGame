@@ -191,6 +191,7 @@ function fire(){
   playArea.appendChild(fire);   
 }
 
+let canFire = true;
 window.addEventListener('keydown',(e)=>{
   if(e.keyCode === 37){
     moveLeft();
@@ -199,6 +200,12 @@ window.addEventListener('keydown',(e)=>{
     moveRight();
   }
   else if(e.keyCode === 38){
-    fire();
+    if(canFire){
+      fire();
+      canFire = false;
+      setTimeout(function(){
+        canFire = true;
+      },1600)
+    }
   }
 })
