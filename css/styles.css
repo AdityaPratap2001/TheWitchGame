@@ -7,7 +7,7 @@ body{
   width: 100%;
   height: 100vh;
   /* background-image: linear-gradient(rgba(207, 41, 41, 0.5),rgba(0,0,0,0.5)),url(./img/back2.jpg); */
-  background-image: linear-gradient(rgba(43, 3, 3, 0.623),rgba(0,0,0,0.5)),url(./img/back2.jpg);
+  background-image: linear-gradient(rgba(43, 3, 3, 0.623),rgba(0,0,0,0.5)),url(../img/back2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -18,7 +18,7 @@ body{
   background-color: indigo;
   z-index: 5;
   background-image: linear-gradient(rgba(43, 3, 3, 0.623),rgba(0,0,0,0.5))
-                    ,url('./img/back4.jpg');
+                    ,url('../img/back4.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -164,6 +164,7 @@ body{
 .lost,.won{
   display: none;
   position: absolute;
+  flex-direction: column;
   z-index: 6;
   margin: 0%;
   padding: 0;
@@ -174,7 +175,10 @@ body{
   background: black;
 }
 
-
+.win a{
+  transform: scale(1.25);
+  transition: 0.5s;
+}
 .lost,.won h1
 {
   margin: 0;

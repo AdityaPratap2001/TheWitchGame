@@ -32,7 +32,7 @@ var check = setInterval(function(){
 
   for(var i=0;i<baloons.length;i++){
     if(baloons_life[i]<1){
-      baloons[i].src = './img/explosion.gif';
+      baloons[i].src = '../img/explosion.gif';
     }
   }
   if(witch_life < 1){
@@ -41,14 +41,12 @@ var check = setInterval(function(){
     setTimeout(function(){
       document.querySelector('.lost').style.display = 'flex';
     },1000)
-    // location.reload();
   }
   else if(baloons_life[0]<1 && baloons_life[1]<1 && baloons_life[2]<1){
     // alert(`You saved them!`);
     clearInterval(check);
-    document.querySelector('.won').style.display = 'flex';
-    // location.reload();
-    
+    // document.querySelector('.won').style.display = 'flex';
+    window.location.replace('../html/index2.html');
   }
 },100)
 
@@ -59,12 +57,11 @@ setInterval(function(){
     if(baloons_life[index] > 1){
       let bomb = document.createElement('div');
       let image = document.createElement('img');
-      image.src = './img/bomb.png';
+      image.src = '../img/bomb.png';
       bomb.appendChild(image);
       bomb.classList.add('bomb');
       bomb.style.position = 'absolute';
       bomb.style.top = 160 + 'px';
-      // bomb.style.left = 0.15*screen.width + 'px';
       bomb.style.left = baloon.getBoundingClientRect().left + 'px';
       playArea.appendChild(bomb);
     }   
@@ -78,12 +75,11 @@ setInterval(function(){
     if(baloons_life[index]>1){
       let bomb = document.createElement('div');
       let image = document.createElement('img');
-      image.src = './img/bomb.png';
+      image.src = '../img/bomb.png';
       bomb.appendChild(image);
       bomb.classList.add('bomb'); 
       bomb.style.position = 'absolute';
       bomb.style.top = 160 + 'px';
-      // bomb.style.left = 0.15*screen.width + 'px';
       bomb.style.left = baloon.getBoundingClientRect().left + (0.1*screen.width) + 'px';
       playArea.appendChild(bomb);  
     } 
@@ -179,21 +175,20 @@ function moveRight(){
 
 // For fire from witch's end
 function fire(){
-  let fire = document.createElement('div');
-  let image = document.createElement('img');
-  image.src = './img/fire2.png';
-  fire.appendChild(image);
-  fire.classList.add('fire');
-  fire.style.position = 'absolute';
-  fire.style.top =  witch.getBoundingClientRect().top + 'px';
-  // bomb.style.left = 0.15*screen.width + 'px';
-  fire.style.left = witch.getBoundingClientRect().left + 'px';
-  playArea.appendChild(fire);   
+    let fire = document.createElement('div');
+    let image = document.createElement('img');
+    image.src = '../img/fire2.png';
+    fire.appendChild(image);
+    fire.classList.add('fire');
+    fire.style.position = 'absolute';
+    fire.style.top =  witch.getBoundingClientRect().top + 'px';
+    fire.style.left = witch.getBoundingClientRect().left + 'px';
+    playArea.appendChild(fire);   
+    canFire = false;
 }
 
-// For fire swooshhing sound effect
 function fireSound(){
-  var audio =new Audio('./sounds/fireSwoosh.mp3');
+  var audio =new Audio('../sounds/fireSwoosh.mp3');
 	audio.play();
 }
 

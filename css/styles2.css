@@ -1,0 +1,270 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  width: 100%;
+  height: 100vh;
+  /* background-image: linear-gradient(rgba(207, 41, 41, 0.5),rgba(0,0,0,0.5)),url(./img/back2.jpg); */
+  background-image: linear-gradient(rgba(43, 3, 3, 0.623),rgba(0,0,0,0.5)),url(../img/back2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* overflow: hidden; */
+}
+.preLoader{
+  position: absolute;
+  background-color: indigo;
+  z-index: 5;
+  background-image: linear-gradient(rgba(43, 3, 3, 0.623),rgba(0,0,0,0.5))
+                    ,url('../img/back4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preLoader div{
+  margin: 1.5%;
+  text-align: center;
+}
+.load{
+  width: 60%;
+}
+.preLoader img{
+  width: 70px;
+  margin-left: 35%;
+}
+.preLoader h1{
+  margin-bottom: 30px;
+  font-size: 45px;
+  color: #eee;
+}
+.load_out,.load_in{
+  border: #eee 1px solid;
+}
+.load_out{
+  width: 240px;
+  border-radius: 10px;
+}
+.load_in{
+  height: 14px;
+  width: 0%;
+  border-radius: 10px;
+  background-color: purple;
+}
+.life_box{
+  width:1.7%;
+  height:13%;
+  position: absolute;
+  border:white 1px solid;
+  padding : 3px;
+  display:flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 5px;
+}
+.life{
+  border: white 1px solid;
+  height:67%;
+  width:100%;
+  background: linear-gradient(#184e68,#da0641);  
+}
+.baloon{
+  width: 11%;
+  position: absolute;
+}
+.witch{
+  width: 11%;
+  position: absolute;
+  bottom: 4vh;
+  left: 44%;
+  z-index: 2;
+}
+.witch_life{
+  bottom: 6vh;
+  left: 43%;
+  z-index: 2;
+}
+.witch_life .life{
+  background: linear-gradient(#c3ec52,#0ba29d)
+}
+.baloon1{
+  left: 15%;
+  z-index: 3;
+}
+.lifeone{
+  left: 14%;
+  margin-top: 2%;
+  z-index: 3;
+}
+.baloon2{
+  left: 43%;
+  z-index: 3;
+}
+.lifetwo{
+  left: 42%;
+  margin-top: 2%;
+  z-index: 3;
+}
+.baloon3{
+  left: 72%;
+  z-index: 3;
+}
+.lifethree{
+  left: 71%;
+  margin-top: 2%;
+  z-index: 3;
+}
+.bomb{
+  height: 3vh;
+  width: 2vw;
+  z-index: 1;
+}
+.bomb img{
+  width: 10vh;
+  transform: translate(-25%,-50%);
+}
+.fire img{
+  transform: rotate(180deg);
+  width: 15vh;
+  z-index: 2;
+}
+
+@media (max-width:920px){
+  .baloon{
+    width: 15%;
+  }
+}
+@media (max-width:700px){
+  .baloon{
+    width: 18%;
+  }
+  .witch{
+    width: 14%;
+  }
+}
+@media (max-width:550px){
+  .baloon{
+    width: 18%;
+  }
+  .witch{
+    width: 20%;
+  }
+}
+@media (max-width:380px){
+  .baloon{
+    width: 20%;
+  }
+  .witch{
+    width: 24%;
+  }
+}
+
+/* Loosing section */
+.lost,.won{
+  display: none;
+  position: absolute;
+  z-index: 6;
+  margin: 0%;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  background: black;
+}
+
+.lost,.won h1
+{
+  margin: 0;
+  padding: 0;
+  color: #111;
+  font-size: 60px;
+  letter-spacing: 0.2em;
+}
+
+.lost,.won h1 span
+{
+  animation: loosing 3s linear infinite;
+}
+.lost h1 span:nth-child(1)t,.won h1 span:nth-child(1)
+{
+  animation-delay: 0.5s;
+}
+.lost h1 span:nth-child(2),.won h1 span:nth-child(2)
+{
+  animation-delay: 0.95s;
+}
+.lost h1 span:nth-child(3),.won h1 span:nth-child(3)
+{
+  animation-delay: 1.25s;
+}
+.lost h1 span:nth-child(4),.won h1 span:nth-child(4)
+{
+  animation-delay: 1.6s;
+}
+.lost h1 span:nth-child(5),.won h1 span:nth-child(5)
+{
+  animation-delay: 1.9s;
+}
+.lost h1 span:nth-child(6),.won h1 span:nth-child(6)
+{
+  animation-delay: 2.3s;
+}
+.lost h1 span:nth-child(7),.won h1 span:nth-child(7)
+
+.lost,.won h1 span:nth-child(1)
+{
+  animation-delay: 0.5s;
+}
+.lost,.won h1 span:nth-child(2)
+{
+  animation-delay: 0.95s;
+}
+.lost,.won h1 span:nth-child(3)
+{
+  animation-delay: 1.25s;
+}
+.lost,.won h1 span:nth-child(4)
+{
+  animation-delay: 1.6s;
+}
+.lost,.won h1 span:nth-child(5)
+{
+  animation-delay: 1.9s;
+}
+.lost,.won h1 span:nth-child(6)
+{
+  animation-delay: 2.3s;
+}
+.lost,.won h1 span:nth-child(7)
+{
+  animation-delay: 2.75s;
+}
+
+@keyframes loosing{
+  0%{
+    color: #ffffff;
+    filter: blur(2px);
+    text-shadow:0 0 10px #00b3ff,
+                0 0 10px #00b3ff,
+                0 0 20px #00b3ff,
+                0 0 40px #00b3ff,
+                0 0 80px #00b3ff,
+                0 0 120px #00b3ff,
+                0 0 200px #00b3ff;
+    }
+    5%,95%{
+      color: #111;
+      filter: blur(0px);
+      text-shadow: none;
+    }
+}
+
