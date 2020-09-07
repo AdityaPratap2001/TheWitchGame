@@ -147,7 +147,7 @@ setInterval(function(){
               baloons_life[index] = baloons_life[index] - 33.33;
             }
           }
-          else if(fire_left <= baloon_left + (0.55*baloon.offsetWidth)){
+          else if(fire_left <= baloon_left + (0.65*baloon.offsetWidth)){
             baloons_life[index] = baloons_life[index] - 33.33;
           }
       })
@@ -191,10 +191,12 @@ function fire(){
   playArea.appendChild(fire);   
 }
 
+// For fire swooshhing sound effect
 function fireSound(){
   var audio =new Audio('./sounds/fireSwoosh.mp3');
 	audio.play();
 }
+
 
 let canFire = true;
 window.addEventListener('keydown',(e)=>{
