@@ -94,7 +94,7 @@ var check = setInterval(function(){
 
   for(var i=0;i<baloons.length;i++){
     if(baloons_life[i]<1){
-      baloons[i].src = '../img/explosion.gif';
+      baloons[i].src = './img/explosion.gif';
     }
   }
   if(witch_life < 1 || time==0){
