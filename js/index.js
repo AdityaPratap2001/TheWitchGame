@@ -57,7 +57,7 @@ var check = setInterval(function(){
     // alert(`You saved them!`);
     clearInterval(check);
     // document.querySelector('.won').style.display = 'flex';
-    window.location.replace('../html/index2.html');
+    window.location.replace('index2.html');
   }
 },100)
 
