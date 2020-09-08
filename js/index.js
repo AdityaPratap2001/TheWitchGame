@@ -7,6 +7,7 @@ let playArea = document.querySelector('body');
 let witch_lifestatus = document.querySelector('.witch_lifeline')
 let baloons_life = [100,100,100];
 let witch_life = 100;
+let timer = document.querySelector('.timer');
 
 // PreLoader
 let loading_width = 0;
@@ -21,6 +22,16 @@ setTimeout(function(){
   document.querySelector('.preLoader').style.display = 'none';
 },4500)
 
+// To keep track of timer
+let time = 48;
+setInterval(function(){
+  if(time<16){
+    timer.style.color = 'red';
+  }
+  timer.innerText = time;
+  time = time-1;
+},1000)
+
 // To keep track of each baloon's life & witch's life
 var check = setInterval(function(){
 
@@ -32,23 +43,21 @@ var check = setInterval(function(){
 
   for(var i=0;i<baloons.length;i++){
     if(baloons_life[i]<1){
-      baloons[i].src = './img/explosion.gif';
+      baloons[i].src = '../img/explosion.gif';
     }
   }
-  if(witch_life < 1){
+  if(witch_life < 1 || time==0){
     // alert(`You couldn't save them!`);
     clearInterval(check);
     setTimeout(function(){
       document.querySelector('.lost').style.display = 'flex';
     },1000)
-    // location.reload();
   }
   else if(baloons_life[0]<1 && baloons_life[1]<1 && baloons_life[2]<1){
     // alert(`You saved them!`);
     clearInterval(check);
-    document.querySelector('.won').style.display = 'flex';
-    // location.reload();
-    
+    // document.querySelector('.won').style.display = 'flex';
+    window.location.replace('../html/index2.html');
   }
 },100)
 
@@ -59,17 +68,16 @@ setInterval(function(){
     if(baloons_life[index] > 1){
       let bomb = document.createElement('div');
       let image = document.createElement('img');
-      image.src = './img/bomb.png';
+      image.src = '../img/bomb.png';
       bomb.appendChild(image);
       bomb.classList.add('bomb');
       bomb.style.position = 'absolute';
       bomb.style.top = 160 + 'px';
-      // bomb.style.left = 0.15*screen.width + 'px';
       bomb.style.left = baloon.getBoundingClientRect().left + 'px';
       playArea.appendChild(bomb);
     }   
   });
-},6500)
+},3500)
 
 // Responsible for bombs that are thrown from 
 // right side of each baloon
@@ -78,17 +86,16 @@ setInterval(function(){
     if(baloons_life[index]>1){
       let bomb = document.createElement('div');
       let image = document.createElement('img');
-      image.src = './img/bomb.png';
+      image.src = '../img/bomb.png';
       bomb.appendChild(image);
       bomb.classList.add('bomb'); 
       bomb.style.position = 'absolute';
       bomb.style.top = 160 + 'px';
-      // bomb.style.left = 0.15*screen.width + 'px';
       bomb.style.left = baloon.getBoundingClientRect().left + (0.1*screen.width) + 'px';
       playArea.appendChild(bomb);  
     } 
   });
-},5000)
+},4500)
 
 // Responsible for moving each bomb down
 setInterval(function(){
@@ -97,7 +104,7 @@ setInterval(function(){
     let initialBombTop = bomb.getBoundingClientRect().top;
     bomb.style.top = initialBombTop + 2.25 + 'px';
   })
-},62.5)
+},42.5)
 
 // For moving fire from bottom to top
 setInterval(function(){
@@ -179,21 +186,20 @@ function moveRight(){
 
 // For fire from witch's end
 function fire(){
-  let fire = document.createElement('div');
-  let image = document.createElement('img');
-  image.src = './img/fire2.png';
-  fire.appendChild(image);
-  fire.classList.add('fire');
-  fire.style.position = 'absolute';
-  fire.style.top =  witch.getBoundingClientRect().top + 'px';
-  // bomb.style.left = 0.15*screen.width + 'px';
-  fire.style.left = witch.getBoundingClientRect().left + 'px';
-  playArea.appendChild(fire);   
+    let fire = document.createElement('div');
+    let image = document.createElement('img');
+    image.src = '../img/fire2.png';
+    fire.appendChild(image);
+    fire.classList.add('fire');
+    fire.style.position = 'absolute';
+    fire.style.top =  witch.getBoundingClientRect().top + 'px';
+    fire.style.left = witch.getBoundingClientRect().left + 'px';
+    playArea.appendChild(fire);   
+    canFire = false;
 }
 
-// For fire swooshhing sound effect
 function fireSound(){
-  var audio =new Audio('./sounds/fireSwoosh.mp3');
+  var audio =new Audio('../sounds/fireSwoosh.mp3');
 	audio.play();
 }
 
