@@ -52,6 +52,22 @@ body{
   border-radius: 10px;
   background-color: purple;
 }
+
+.timer{
+  background-color: #eee;
+  opacity: 0.6;
+  color: #111;
+  height: 110px;
+  width: 110px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 40px;
+  padding-top: 2.4%;
+  position: absolute;
+  right: 20px;
+  top: 140px;
+}
+
 .life_box{
   width:1.7%;
   height:13%;

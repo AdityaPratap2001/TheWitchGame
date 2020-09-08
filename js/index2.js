@@ -8,6 +8,7 @@ let playArea = document.querySelector('body');
 let witch_lifestatus = document.querySelector('.witch_lifeline')
 let baloons_life = [100,100];
 let witch_life = 100;
+let timer = document.querySelector('.timer');
 
 // PreLoader
 let loading_width = 0;
@@ -21,6 +22,16 @@ let loading = setInterval(function(){
 setTimeout(function(){
   document.querySelector('.preLoader').style.display = 'none';
 },4500)
+
+// To keep track of timer
+let time = 65
+setInterval(function(){
+  if(time<16){
+    timer.style.color = 'red';
+  }
+  timer.innerText = time;
+  time = time-1;
+},1000)
 
 // To move first baloon
 let xAxis = 400;
@@ -86,7 +97,7 @@ var check = setInterval(function(){
       baloons[i].src = '../img/explosion.gif';
     }
   }
-  if(witch_life < 1){
+  if(witch_life < 1 || time==0){
     // alert(`You couldn't save them!`);
     clearInterval(check);
     setTimeout(function(){
@@ -118,7 +129,7 @@ setInterval(function(){
       playArea.appendChild(bomb);
     }   
   });
-},2800)
+},1400)
 
 // Responsible for bombs that are thrown from 
 // right side of each baloon
@@ -136,7 +147,7 @@ setInterval(function(){
       playArea.appendChild(bomb);  
     } 
   });
-},1900)
+},1100)
 
 // Responsible for moving each bomb down
 setInterval(function(){
@@ -145,7 +156,7 @@ setInterval(function(){
     let initialBombTop = bomb.getBoundingClientRect().top;
     bomb.style.top = initialBombTop + 2.25 + 'px';
   })
-},62.5)
+},42.5)
 
 // For moving fire from bottom to top
 setInterval(function(){
@@ -154,7 +165,7 @@ setInterval(function(){
     let initialFireTop = fire.getBoundingClientRect().top;
     fire.style.top = initialFireTop - 10.75 + 'px';
   })
-},62.5)
+},42.5)
 
 // For detecting if bomb hits witch
 setInterval(function(){
