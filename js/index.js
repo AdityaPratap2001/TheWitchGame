@@ -68,7 +68,7 @@ setInterval(function(){
     if(baloons_life[index] > 1){
       let bomb = document.createElement('div');
       let image = document.createElement('img');
-      image.src = '../img/bomb.png';
+      image.src = './img/bomb.png';
       bomb.appendChild(image);
       bomb.classList.add('bomb');
       bomb.style.position = 'absolute';
@@ -86,7 +86,7 @@ setInterval(function(){
     if(baloons_life[index]>1){
       let bomb = document.createElement('div');
       let image = document.createElement('img');
-      image.src = '../img/bomb.png';
+      image.src = './img/bomb.png';
       bomb.appendChild(image);
       bomb.classList.add('bomb'); 
       bomb.style.position = 'absolute';
@@ -188,7 +188,7 @@ function moveRight(){
 function fire(){
     let fire = document.createElement('div');
     let image = document.createElement('img');
-    image.src = '../img/fire2.png';
+    image.src = './img/fire2.png';
     fire.appendChild(image);
     fire.classList.add('fire');
     fire.style.position = 'absolute';
